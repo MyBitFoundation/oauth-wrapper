@@ -1,0 +1,22 @@
+{
+  "name": "oauth.mybit.io",
+  "alias": "oauth.mybit.io",
+  "version": 2,
+  "builds": [
+    { "src": "src/auth.js", "use": "@now/node" },
+    { "src": "src/callback.js", "use": "@now/node" }
+  ],
+  "routes": [
+    { "src": "/callback", "dest": "src/callback.js" },
+    { "src": "/", "dest": "src/auth.js" }
+  ],
+  "regions": ["gru1"],
+  "env": {
+    "PROVIDER": "GitHub",
+    "AUTHORIZE_URL": "https://github.com/login/oauth/authorize",
+    "CALLBACK_URL": "https://ddf.mybit.io/",
+    "CLIENT_ID": "@github_client_id",
+    "CLIENT_SECRET": "@github_client_secret",
+    "GET_TOKEN_URL": "https://github.com/login/oauth/access_token"
+  }
+}
